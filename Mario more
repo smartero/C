@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main(void)
+{
+    //Prompt user for a number between 1 and 23
+    int height;
+    int spaces;
+    int dashes;
+    int dashes2;
+    //Ask for a number between 1 and 23
+    do
+    {
+        height = get_int("Choose pyramid height, max nr is 23: ");
+    }
+    while (height < 0 || height > 23);
+
+    //Print out that many raws
+    for (int i = 0; i < height; i++)
+    {
+        //Print that many columns
+        for (spaces = (height - i); spaces > 0; spaces--)
+        {
+            printf(" ");
+        }
+        for (dashes = 0; dashes < i; dashes++)
+        {
+            printf("#");
+        }
+        printf("  ");
+        for (dashes2 = 0; dashes2 < i; dashes2++)
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+}
