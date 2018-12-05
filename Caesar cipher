@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+//Caesar cypher - program to cipher words
+
+//ask for a key: any positive number
+int main(int argc, char *argv[])
+{
+    int key;
+    if (argc != 2)
+    {
+        printf("Usage: %s k\n", argv[0]);
+        return 1;
+    }
+    key = atoi(argv[1]);
+    key = key % 26;
+    if (key < 0)
+    {
+        printf("Error\n");
+        return 1;
+    }
+
+    //ask for a word to cipher
+    printf("plaintext: ");
+    scanf("%s", s);
+    printf("ciphertext: ");
+    int n = strlen(s);
+    for (int i = 0; i < n; i++)
+    {
+        if (isupper(s[i])) //rule for lowercase letter
+        {
+            printf("%c", ((s[i] + key) % 65) % 26 + 65);
+        }
+        else if (islower(s[i])) //rule for capital letter
+        {
+            printf("%c", ((s[i] + key) % 96) % 26 + 96);
+        }
+        else if (isblank(s[i])) //rule for blank or tab
+        {
+            printf(" ");
+        }
+        else //rule for other symbols
+        {
+            printf("%c", s[i]);
+        }
+    }
+    printf("\n");
+    return 0;
+}
